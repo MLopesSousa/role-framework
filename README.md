@@ -1,7 +1,6 @@
-# Framework to validate API call based on requester roles, HTTP Header roles.
+# Framework to validate API calls based on requester roles, HTTP Header roles.
 
 The **roles** header should contain the **roles** separated by space.
-
 ```
 GET http://localhost:8080/ HTTP/1.1
 Content-Type: application/json
@@ -12,7 +11,7 @@ roles: ADMIN ASU
 ```
 
 #### To enable the validation on API calls, the following steps should be done.
-Add the **entity** propertie in the service that shoud be protected by the validation.
+Add the **entity** property in the service that should be protected by the validation.
 
 ### **`service.js`**
 ```javascript
@@ -29,7 +28,8 @@ module.exports = {
 
 ```
 
-Create the rules file. This file should contain one element by entity. Inside the entity element all the protected actions should be liste with a set of roles that has permission to perform it. In the exemple bellow, the role **ADMIN** has permission to perform the actions: **create, update, delete and list** on the entity **user** while the role **ASU** has only the **list** permission on the **user** entity. 
+Create the rules file. This file should contain one element by the entity. Inside the entity element, all the protected actions should be listed with a set of roles that has permission to perform it. In the example bellow, the role **ADMIN** has permission to perform the actions: **create, update, delete and list** on the entity **user** while the role **ASU** has only the **list** permission on the **user** entity. 
+
 ### **`rules.js`**
 ```javascript
 module.exports = {
@@ -81,7 +81,7 @@ router.get('/', function(req, res) {
 **`request.http`**.
 
 ```
-### simple test with the most basic Role
+### a simple test with the most basic Role
 GET http://localhost:8080/ HTTP/1.1
 Content-Type: application/json
 roles: ASU
@@ -160,7 +160,7 @@ roles: ADMIN ASU
 ```
 
 ```
-### simple test with unknown Role
+### a simple test with unknown Role
 GET http://localhost:8080/ HTTP/1.1
 Content-Type: application/json
 roles: DEV
